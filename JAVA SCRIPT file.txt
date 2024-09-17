@@ -1,0 +1,31 @@
+function addTodo() {
+    const input = document.getElementById('todo-input');
+    const newTodoText = input.value.trim();
+
+    if (newTodoText === '') {
+        return;
+    }
+
+    const todoList = document.getElementById('todo-list');
+
+    // Create a new list item
+    const newTodo = document.createElement('li');
+    newTodo.textContent = newTodoText;
+
+    // Create a delete button
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.className = 'delete';
+    deleteButton.onclick = function () {
+        todoList.removeChild(newTodo);
+    };
+
+    // Append the delete button to the list item
+    newTodo.appendChild(deleteButton);
+
+    // Append the list item to the list
+    todoList.appendChild(newTodo);
+
+    // Clear the input field
+    input.value = '';
+}
